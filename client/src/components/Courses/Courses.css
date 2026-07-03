@@ -1,11 +1,358 @@
-.courses-container {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 10px;
+/* ── Courses – Modern & Fun ───────────────────────────────────────────── */
+@import url("https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap");
+
+/* ── Design Tokens ───────────────────────────────────────────────────── */
+:root {
+  --font: "Plus Jakarta Sans", sans-serif;
+
+  /* Card colors for staggered accents */
+  --c1: #6366f1; /* Indigo */
+  --c2: #f59e0b; /* Amber */
+  --c3: #10b981; /* Emerald */
+  --c4: #ec4899; /* Pink */
+  --c5: #3b82f6; /* Blue */
+  --c6: #8b5cf6; /* Violet */
+
+  --white: #ffffff;
+  --dark: #0f0e17;
+  --muted: #626a7e;
+  --bg-gradient: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+
+  --radius: 20px;
+  --ease: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --ease-out: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
+/* ── Layout & Wrapper ────────────────────────────────────────────────── */
+.courses-page {
+  background: var(--bg-gradient);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  font-family: var(--font);
+}
+
+.courses-content-wrapper {
+  max-width: 1200px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 3rem 2rem 5rem;
+}
+
+/* ── Page Headers ─────────────────────────────────────────────────────── */
+.courses-title {
+  font-family: var(--font);
+  font-size: clamp(2.2rem, 5vw, 3.2rem);
+  font-weight: 800;
+  color: var(--dark);
+  margin: 0 0 0.5rem 0;
+  letter-spacing: -0.03em;
+  position: relative;
+  display: inline-block;
+  background: linear-gradient(135deg, #4b4bdf 0%, #10908d 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Accent bar under title */
+.courses-title::after {
+  content: "";
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 40px;
+  height: 4px;
+  border-radius: 99px;
+  background: linear-gradient(90deg, #4b4bdf, #10908d);
+}
+
+.courses-subtitle {
+  font-size: clamp(1rem, 2vw, 1.2rem);
+  color: var(--muted);
+  margin: 0.8rem 0 3.5rem;
+  max-width: 650px;
+  line-height: 1.6;
+  font-weight: 500;
+}
+
+/* Status loading/error layouts */
+.status-text {
+  text-align: center;
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: var(--muted);
+  margin-top: 10vh;
+}
+.status-text.error {
+  color: #ef4444;
+}
+
+/* ── Grid ────────────────────────────────────────────────────────────── */
+.courses-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
+  gap: 32px;
+  padding: 8px 0 24px;
+}
+
+/* ── Card Base ───────────────────────────────────────────────────────── */
 .course-card {
-  border: 1px solid #ccc;
-  margin: 10px 0;
-  padding: 10px;
+  position: relative;
+  background: var(--white);
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow:
+    0 4px 6px -1px rgba(0, 0, 0, 0.03),
+    0 10px 20px -3px rgba(0, 0, 0, 0.05),
+    0 20px 25px -5px rgba(0, 0, 0, 0.02);
+  transition:
+    transform 0.4s var(--ease),
+    box-shadow 0.35s var(--ease-out);
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  animation: card-in 0.5s var(--ease) both;
+}
+
+@keyframes card-in {
+  from {
+    opacity: 0;
+    transform: translateY(30px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* Stagger card entries & allocate color scheme */
+.course-card:nth-child(1) { animation-delay: 0.05s; --accent: var(--c1); }
+.course-card:nth-child(2) { animation-delay: 0.1s; --accent: var(--c2); }
+.course-card:nth-child(3) { animation-delay: 0.15s; --accent: var(--c3); }
+.course-card:nth-child(4) { animation-delay: 0.2s; --accent: var(--c4); }
+.course-card:nth-child(5) { animation-delay: 0.25s; --accent: var(--c5); }
+.course-card:nth-child(6) { animation-delay: 0.3s; --accent: var(--c6); }
+.course-card:nth-child(7) { animation-delay: 0.35s; --accent: var(--c1); }
+.course-card:nth-child(8) { animation-delay: 0.4s; --accent: var(--c2); }
+.course-card:nth-child(9) { animation-delay: 0.45s; --accent: var(--c3); }
+.course-card:nth-child(10) { animation-delay: 0.5s; --accent: var(--c4); }
+
+/* ── Card Header Banner ──────────────────────────────────────────────── */
+.course-card::before {
+  content: "";
+  display: block;
+  height: 110px;
+  width: 100%;
+  background: linear-gradient(
+    135deg,
+    var(--accent, var(--c1)) 0%,
+    color-mix(in srgb, var(--accent, var(--c1)) 60%, #fff) 100%
+  );
+  border-radius: var(--radius) var(--radius) 50% 50% / var(--radius) var(--radius) 20px 20px;
+  transition: height 0.35s var(--ease-out);
+}
+
+/* Shimmer effect on hover */
+.course-card::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -75%;
+  width: 50%;
+  height: 110px;
+  background: linear-gradient(
+    120deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.4) 50%,
+    transparent 100%
+  );
+  animation: shimmer 4s ease-in-out infinite;
+  pointer-events: none;
+}
+
+@keyframes shimmer {
+  0% { left: -75%; opacity: 0; }
+  12% { opacity: 1; }
+  100% { left: 130%; opacity: 0; }
+}
+
+/* Hover States */
+.course-card:hover {
+  transform: translateY(-8px) scale(1.015);
+  box-shadow:
+    0 12px 28px rgba(0, 0, 0, 0.05),
+    0 32px 64px rgba(0, 0, 0, 0.08);
+}
+
+.course-card:hover::before {
+  height: 115px;
+}
+
+/* ── Floating Icon ───────────────────────────────────────────────────── */
+.course-card .card-icon {
+  position: absolute;
+  top: 68px;
+  left: 24px;
+  width: 54px;
+  height: 54px;
+  border-radius: 50%;
+  background: var(--white);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.6rem;
+  z-index: 1;
+  transition: transform 0.4s var(--ease);
+}
+
+.course-card:hover .card-icon {
+  transform: rotate(-12deg) scale(1.12);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+}
+
+/* ── Content Area ────────────────────────────────────────────────────── */
+.course-card h2 {
+  margin: 44px 24px 8px;
+  font-size: 1.15rem;
+  font-weight: 800;
+  color: var(--dark);
+  line-height: 1.4;
+  letter-spacing: -0.02em;
+  transition: color 0.25s;
+}
+
+.course-card:hover h2 {
+  color: var(--accent, var(--c1));
+}
+
+.course-card p {
+  margin: 0 24px 20px;
+  font-size: 0.88rem;
+  line-height: 1.65;
+  color: var(--muted);
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* ── Tags / Chips ────────────────────────────────────────────────────── */
+.card-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 0 24px 20px;
+}
+
+.course-card .tag {
+  display: inline-flex;
+  align-items: center;
+  padding: 5px 12px;
+  border-radius: 99px;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  background: color-mix(in srgb, var(--accent, var(--c1)) 10%, transparent);
+  color: var(--accent, var(--c1));
+  border: 1.5px solid color-mix(in srgb, var(--accent, var(--c1)) 18%, transparent);
+  transition: all 0.3s var(--ease);
+}
+
+.course-card:hover .tag {
+  background: var(--accent, var(--c1));
+  color: var(--white);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px color-mix(in srgb, var(--accent, var(--c1)) 30%, transparent);
+}
+
+/* ── Card Action Footer ───────────────────────────────────────────────── */
+.card-footer {
+  margin-top: auto;
+  padding: 0 24px 24px;
+}
+
+.view-details-button {
+  display: block;
+  text-align: center;
+  padding: 12px 24px;
+  border-radius: 12px;
+  font-size: 0.88rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  background: var(--accent, var(--c1));
+  color: var(--white);
+  text-decoration: none;
+  box-shadow: 0 4px 14px color-mix(in srgb, var(--accent, var(--c1)) 20%, transparent);
+  transition: all 0.3s var(--ease);
+}
+
+.view-details-button:hover {
+  background: color-mix(in srgb, var(--accent, var(--c1)) 85%, #000);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px color-mix(in srgb, var(--accent, var(--c1)) 40%, transparent);
+}
+
+/* ── Responsive styling for smaller devices ──────────────────────────── */
+@media (max-width: 640px) {
+  .courses-content-wrapper {
+    padding: 2rem 1.25rem 4rem;
+  }
+
+  .courses-subtitle {
+    margin-bottom: 2.2rem;
+  }
+
+  .courses-container {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  .course-card::before {
+    height: 95px;
+  }
+
+  .course-card::after {
+    height: 95px;
+  }
+
+  .course-card .card-icon {
+    top: 56px;
+    left: 20px;
+    width: 46px;
+    height: 46px;
+    font-size: 1.3rem;
+  }
+
+  .course-card h2 {
+    margin: 32px 20px 8px;
+    font-size: 1.1rem;
+  }
+
+  .course-card p {
+    margin: 0 20px 16px;
+    font-size: 0.85rem;
+  }
+
+  .card-tags {
+    margin: 0 20px 16px;
+    gap: 6px;
+  }
+
+  .course-card .tag {
+    padding: 4px 10px;
+    font-size: 0.68rem;
+  }
+
+  .card-footer {
+    padding: 0 20px 20px;
+  }
+
+  .view-details-button {
+    padding: 10px 20px;
+    font-size: 0.82rem;
+  }
 }

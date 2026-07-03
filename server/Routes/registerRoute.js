@@ -4,7 +4,7 @@ const registrationValidation = require("../Validation/registrationValidation");
 
 const router = express.Router();
 
-router.post("/register", async (req, res) => {
+router.post("/", async (req, res) => {
   try {
     const { error } = registrationValidation.validate(req.body);
     if (error) {
