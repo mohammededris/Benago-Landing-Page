@@ -29,7 +29,7 @@ export function Landing() {
                 viewBox="0 0 24 24"
                 fill="none"
                 stroke="currentColor"
-                stroke-width="2"
+                strokeWidth="2"
                 stroke-linecap="round"
                 stroke-linejoin="round"
                 data-lucide="database"
@@ -49,9 +49,9 @@ export function Landing() {
                 viewBox="0 0 24 24"
                 fill="none"
                 stroke="currentColor"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
                 data-lucide="circuit-board"
                 aria-hidden="true"
                 class="lucide lucide-circuit-board"
@@ -71,9 +71,9 @@ export function Landing() {
                 viewBox="0 0 24 24"
                 fill="none"
                 stroke="currentColor"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
                 data-lucide="code-xml"
                 aria-hidden="true"
                 class="lucide lucide-code-xml"
@@ -91,9 +91,9 @@ export function Landing() {
                 viewBox="0 0 24 24"
                 fill="none"
                 stroke="currentColor"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
                 data-lucide="cpu"
                 aria-hidden="true"
                 class="lucide lucide-cpu"
@@ -121,8 +121,8 @@ export function Landing() {
                 x2="80"
                 y2="200"
                 stroke="#c7d2fe"
-                stroke-width="2"
-                stroke-dasharray="6,4"
+                strokeWidth="2"
+                strokeDasharray="6,4"
               ></line>
               <line
                 x1="200"
@@ -130,8 +130,8 @@ export function Landing() {
                 x2="320"
                 y2="200"
                 stroke="#c7d2fe"
-                stroke-width="2"
-                stroke-dasharray="6,4"
+                strokeWidth="2"
+                strokeDasharray="6,4"
               ></line>
               <line
                 x1="80"
@@ -139,8 +139,8 @@ export function Landing() {
                 x2="200"
                 y2="340"
                 stroke="#c7d2fe"
-                stroke-width="2"
-                stroke-dasharray="6,4"
+                strokeWidth="2"
+                strokeDasharray="6,4"
               ></line>
               <line
                 x1="320"
@@ -148,8 +148,8 @@ export function Landing() {
                 x2="200"
                 y2="340"
                 stroke="#c7d2fe"
-                stroke-width="2"
-                stroke-dasharray="6,4"
+                strokeWidth="2"
+                strokeDasharray="6,4"
               ></line>
               <line
                 x1="80"
@@ -157,8 +157,8 @@ export function Landing() {
                 x2="320"
                 y2="200"
                 stroke="#c7d2fe"
-                stroke-width="2"
-                stroke-dasharray="6,4"
+                strokeWidth="2"
+                strokeDasharray="6,4"
               ></line>
               <line
                 x1="200"
@@ -166,8 +166,8 @@ export function Landing() {
                 x2="200"
                 y2="340"
                 stroke="#c7d2fe"
-                stroke-width="2"
-                stroke-dasharray="6,4"
+                strokeWidth="2"
+                strokeDasharray="6,4"
               ></line>
             </svg>
             <div className="mesh-center">
@@ -204,24 +204,59 @@ export function Landing() {
             <span className="section-badge">Simple Concept</span>
             <h2 className="section-title">How Benago Works</h2>
             <p className="section-subtitle">
-              We build cohort schedules based on local demand. Here is how you can
-              secure your spot.
+              We build cohort schedules based on local demand. Here is how you
+              can secure your spot.
             </p>
           </div>
           <div className="steps-grid">
             <div className="step-card">
               <div className="step-icon step-1">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="book-open-check" aria-hidden="true" className="lucide lucide-book-open-check"><path d="M12 21V7"></path><path d="m16 12 2 2 4-4"></path><path d="M22 6V4a1 1 0 0 0-1-1h-5a4 4 0 0 0-4 4 4 4 0 0 0-4-4H3a1 1 0 0 0-1 1v13a1 1 0 0 0 1 1h6a3 3 0 0 1 3 3 3 3 0 0 1 3-3h6a1 1 0 0 0 1-1v-1.3"></path></svg>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  data-lucide="book-open-check"
+                  aria-hidden="true"
+                  className="lucide lucide-book-open-check"
+                >
+                  <path d="M12 21V7"></path>
+                  <path d="m16 12 2 2 4-4"></path>
+                  <path d="M22 6V4a1 1 0 0 0-1-1h-5a4 4 0 0 0-4 4 4 4 0 0 0-4-4H3a1 1 0 0 0-1 1v13a1 1 0 0 0 1 1h6a3 3 0 0 1 3 3 3 3 0 0 1 3-3h6a1 1 0 0 0 1-1v-1.3"></path>
+                </svg>
               </div>
               <h3>1. Choose a Course</h3>
               <p>
-                Browse our catalog of dynamic, highly relevant subjects and choose
-                what you'd like to learn.
+                Browse our catalog of dynamic, highly relevant subjects and
+                choose what you'd like to learn.
               </p>
             </div>
             <div className="step-card">
               <div className="step-icon step-2">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="clipboard-edit" aria-hidden="true" className="lucide lucide-clipboard-edit"><path d="M16 4h2a2 2 0 0 1 2 2v2"></path><path d="M21.34 15.664a1 1 0 1 0-3.004-3.004l-5.01 5.012a2 2 0 0 0-.506.854l-.837 2.87a.5.5 0 0 0 .62.62l2.87-.837a2 2 0 0 0 .854-.506z"></path><path d="M8 22H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"></path><rect x="8" y="2" width="8" height="4" rx="1"></rect></svg>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  data-lucide="clipboard-edit"
+                  aria-hidden="true"
+                  className="lucide lucide-clipboard-edit"
+                >
+                  <path d="M16 4h2a2 2 0 0 1 2 2v2"></path>
+                  <path d="M21.34 15.664a1 1 0 1 0-3.004-3.004l-5.01 5.012a2 2 0 0 0-.506.854l-.837 2.87a.5.5 0 0 0 .62.62l2.87-.837a2 2 0 0 0 .854-.506z"></path>
+                  <path d="M8 22H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"></path>
+                  <rect x="8" y="2" width="8" height="4" rx="1"></rect>
+                </svg>
               </div>
               <h3>2. Register Your Interest</h3>
               <p>
@@ -230,11 +265,30 @@ export function Landing() {
               </p>
             </div>
             <div className="step-card">
-              <div className="step-icon step-3"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="mail-check" aria-hidden="true" class="lucide lucide-mail-check"><path d="M22 13V6a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v12c0 1.1.9 2 2 2h8"></path><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path><path d="m16 19 2 2 4-4"></path></svg></div>
+              <div className="step-icon step-3">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  data-lucide="mail-check"
+                  aria-hidden="true"
+                  class="lucide lucide-mail-check"
+                >
+                  <path d="M22 13V6a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v12c0 1.1.9 2 2 2h8"></path>
+                  <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
+                  <path d="m16 19 2 2 4-4"></path>
+                </svg>
+              </div>
               <h3>3. Get Confirmation</h3>
               <p>
-                Receive an email immediately and updates. We'll invite you once we
-                launch the cohort!
+                Receive an email immediately and updates. We'll invite you once
+                we launch the cohort!
               </p>
             </div>
           </div>

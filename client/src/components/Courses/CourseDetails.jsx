@@ -1,7 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import { useParams, Link } from "react-router-dom";
 import { useEffect } from "react";
-import { fetchCourses } from "./Courses";
+import fetchCourses from "./fetchCourses";
 import { Registration } from "../Registration/Registration";
 import { Header } from "../Header/Header";
 

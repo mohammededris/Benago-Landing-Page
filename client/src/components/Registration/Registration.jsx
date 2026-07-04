@@ -1,10 +1,11 @@
 import { useQuery } from "@tanstack/react-query";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import { useState } from "react";
-import { fetchCourses } from "../Courses/Courses";
+import fetchCourses from "../Courses/fetchCourses";
 
 export function Registration() {
   const { _id } = useParams();
+  const navigate = useNavigate();
 
   const { data: courses = [] } = useQuery({
     queryKey: ["courses"],
@@ -22,17 +23,21 @@ export function Registration() {
     note: "",
     sendConfirmationEmail: false,
   });
+
+  const [showSuccess, setShowSuccess] = useState(false);
+
   const handleChange = (event) => {
     const { name, value } = event.target;
     setFormData((prevData) => ({
       ...prevData,
       [name]: value,
-      courseTitle: course.title, // Automatically set the course title based on the selected course
     }));
   };
 
   const handleSubmit = async (event) => {
     event.preventDefault();
+    const payload = { ...formData, courseTitle: course.title };
+
     const response = await fetch(
       `${import.meta.env.VITE_API_URL}/api/register`,
       {
@@ -40,7 +45,7 @@ export function Registration() {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify(formData),
+        body: JSON.stringify(payload),
       },
     );
 
@@ -48,7 +53,8 @@ export function Registration() {
       throw new Error("Failed to submit registration");
     }
 
-    return response.json();
+    await response.json();
+    setShowSuccess(true);
   };
 
   return (
@@ -96,6 +102,18 @@ export function Registration() {
 
         <button type="submit">Submit</button>
       </form>
+
+      {showSuccess && (
+        <div className="success-popup-overlay">
+          <div className="success-popup">
+            <h2>Submission successfully</h2>
+            <p>Your registration has been sent.</p>
+            <button type="button" onClick={() => navigate("/")}>
+              Return Home
+            </button>
+          </div>
+        </div>
+      )}
     </>
   );
 }
