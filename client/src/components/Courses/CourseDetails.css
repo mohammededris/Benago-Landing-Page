@@ -1,481 +1,302 @@
-/* ── Course Details Page – Modern & Premium ───────────────────────────────── */
+/* ── Course Details & Registration Form – Minimalist Modern Style ── */
 @import url("https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap");
 
 :root {
   --font: "Plus Jakarta Sans", sans-serif;
+
+  /* Theme Color Palette */
+  --c1: #6366f1;
+  /* Indigo */
+  --c2: #f59e0b;
+  /* Amber */
+  --c4: #ec4899;
+  /* Pink */
+  --c6: #8b5cf6;
+  /* Violet */
+
   --white: #ffffff;
   --dark: #0f0e17;
-  --muted: #626a7e;
-  --bg-gradient: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
-  --accent-blue: #4b4bdf;
-  --accent-cyan: #10908d;
-  --radius-lg: 24px;
-  --radius-md: 16px;
-  --radius-sm: 8px;
-  --ease: cubic-bezier(0.34, 1.56, 0.64, 1);
-  --ease-out: cubic-bezier(0.4, 0, 0.2, 1);
+  --muted: #475569;
+  /* Slate 600 */
+  --light-bg: #f8fafc;
+  --border-color: #e2e8f0;
 }
 
-.course-details-page {
-  background: var(--bg-gradient);
+/* ── Page Layout & Context Reset (No Centered Box Constraints) ── */
+body:has(.course-details) {
+  background-color: var(--light-bg) !important;
+  background-image:
+    radial-gradient(at 0% 0%, rgba(99, 102, 241, 0.03) 0px, transparent 50%),
+    radial-gradient(at 100% 0%, rgba(236, 72, 153, 0.03) 0px, transparent 50%) !important;
+  background-attachment: fixed !important;
+  font-family: var(--font) !important;
   min-height: 100vh;
-  font-family: var(--font);
-  color: var(--dark);
+  margin: 0;
+  padding: 0 !important;
+  /* Reset padding to let header go full bleed */
+}
+
+#root:has(.course-details) {
   display: flex;
   flex-direction: column;
-}
-
-/* ── Fallback Page ───────────────────────────────────────────────────── */
-.course-details-fallback {
-  max-width: 600px;
-  margin: 10vh auto;
-  padding: 3rem;
-  background: var(--white);
-  border-radius: var(--radius-md);
-  box-shadow: 0 10px 30px rgba(0,0,0,0.05);
-  text-align: center;
-}
-
-.course-details-fallback p {
-  font-size: 1.2rem;
-  font-weight: 600;
-  color: var(--muted);
-  margin-bottom: 1.5rem;
-}
-
-.course-details-fallback .back-link {
-  display: inline-block;
-  padding: 0.75rem 1.5rem;
-  background: var(--accent-blue);
-  color: var(--white);
-  text-decoration: none;
-  border-radius: var(--radius-sm);
-  font-weight: 700;
-  transition: all 0.3s;
-}
-
-/* ── Hero Banner Section ──────────────────────────────────────────────── */
-.details-hero {
-  position: relative;
-  background: #0b0f19;
-  color: var(--white);
-  padding: 4.5rem 2rem 5.5rem;
-  overflow: hidden;
-}
-
-.hero-bg-gradient {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: 
-    radial-gradient(circle at 80% 20%, rgba(75, 75, 223, 0.25) 0%, transparent 50%),
-    radial-gradient(circle at 20% 80%, rgba(16, 144, 141, 0.2) 0%, transparent 50%);
-  opacity: 0.8;
-  z-index: 1;
-}
-
-.hero-content {
-  position: relative;
-  max-width: 1200px;
-  margin: 0 auto;
-  z-index: 2;
-}
-
-.back-button {
-  display: inline-flex;
   align-items: center;
-  gap: 8px;
-  color: rgba(255, 255, 255, 0.75);
-  text-decoration: none;
-  font-size: 0.9rem;
-  font-weight: 600;
-  margin-bottom: 2.5rem;
-  transition: color 0.3s var(--ease-out);
-}
-
-.back-button svg {
-  transition: transform 0.3s var(--ease);
-}
-
-.back-button:hover {
-  color: var(--white);
-}
-
-.back-button:hover svg {
-  transform: translateX(-4px);
-}
-
-.hero-tags {
-  display: flex;
-  gap: 10px;
-  margin-bottom: 1.5rem;
-}
-
-.hero-tag {
-  padding: 6px 14px;
-  border-radius: 99px;
-  font-size: 0.75rem;
-  font-weight: 700;
-  letter-spacing: 0.05em;
-  text-transform: uppercase;
-}
-
-.hero-tag.category {
-  background: rgba(75, 75, 223, 0.25);
-  color: #a5b4fc;
-  border: 1px solid rgba(75, 75, 223, 0.4);
-}
-
-.hero-tag.level {
-  background: rgba(255, 255, 255, 0.1);
-  color: rgba(255, 255, 255, 0.9);
-  border: 1px solid rgba(255, 255, 255, 0.15);
-}
-
-.details-hero h1 {
-  font-size: clamp(2.2rem, 5vw, 3.8rem);
-  font-weight: 800;
-  letter-spacing: -0.03em;
-  line-height: 1.2;
-  margin: 0 0 1.2rem 0;
-  max-width: 850px;
-  color: var(--white);
-}
-
-/* Override underline styled in Courses.css for details h1 */
-.details-hero h1::after {
-  display: none;
-}
-
-.hero-desc {
-  font-size: clamp(1rem, 2.5vw, 1.25rem);
-  line-height: 1.6;
-  color: rgba(255, 255, 255, 0.75);
-  max-width: 800px;
-  margin: 0 0 2rem;
-  font-weight: 400;
-}
-
-.instructor-meta {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  padding: 8px 16px;
-  background: rgba(255, 255, 255, 0.05);
-  border-radius: 99px;
-  border: 1px solid rgba(255, 255, 255, 0.08);
-}
-
-.meta-label {
-  font-size: 0.78rem;
-  color: rgba(255, 255, 255, 0.5);
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-}
-
-.meta-value {
-  font-size: 0.88rem;
-  font-weight: 600;
-  color: var(--white);
-}
-
-/* ── Split Layout Container ─────────────────────────────────────────── */
-.details-container {
-  max-width: 1200px;
+  justify-content: flex-start;
   width: 100%;
-  margin: -2.5rem auto 5rem;
-  padding: 0 2rem;
-  display: grid;
-  grid-template-columns: 1fr 380px;
-  gap: 40px;
-  z-index: 5;
-  position: relative;
+  box-sizing: border-box;
 }
 
-.details-main-content {
-  display: flex;
-  flex-direction: column;
-  gap: 32px;
+/* ── Full-Bleed Navigation Header Fix ── */
+#root:has(.course-details) .header {
+  width: 100%;
+  box-sizing: border-box;
+  align-self: stretch;
+  padding: 1.25rem 5% !important;
+  background: var(--white) !important;
+  border-bottom: 1px solid var(--border-color);
+  box-shadow: 0 4px 20px -10px rgba(0, 0, 0, 0.03);
 }
 
-/* ── Content Sections ────────────────────────────────────────────────── */
-.section-block {
-  background: var(--white);
-  padding: 2.5rem;
-  border-radius: var(--radius-lg);
-  box-shadow: 
-    0 4px 6px -1px rgba(0,0,0,0.02),
-    0 10px 20px -3px rgba(0,0,0,0.03);
+#root:has(.course-details) hr {
+  display: none;
+  /* Hide the default horizontal line as header has a border-bottom */
 }
 
-.section-block h2 {
-  font-size: 1.45rem;
+/* ── Content Sections (Borderless, Open Canvas layout) ── */
+.course-details,
+.registration-form {
+  width: 90%;
+  max-width: 800px;
+  box-sizing: border-box;
+  padding: 2rem 0;
+  margin: 0 auto;
+  border: none !important;
+  background: none !important;
+  box-shadow: none !important;
+  border-radius: 0 !important;
+}
+
+/* ── Course Details Section ── */
+.course-details {
+  margin-top: 3.5rem;
+  border-bottom: 1px solid var(--border-color) !important;
+  padding-bottom: 4rem;
+}
+
+.course-details h1 {
+  font-family: var(--font);
+  font-size: clamp(2.2rem, 6vw, 3.2rem);
   font-weight: 800;
-  letter-spacing: -0.02em;
-  margin-bottom: 1.5rem;
   color: var(--dark);
+  margin: 0 0 1.5rem 0;
+  line-height: 1.15;
+  letter-spacing: -0.04em;
+  background: linear-gradient(135deg, var(--dark) 45%, var(--c1) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
-.about-text {
-  font-size: 1.05rem;
+.course-details p {
+  font-family: var(--font);
+  font-size: 1.15rem;
   line-height: 1.75;
   color: var(--muted);
+  margin: 0 0 2rem 0;
 }
 
-/* ── Syllabus Timeline ───────────────────────────────────────────────── */
-.syllabus-timeline {
-  position: relative;
-  padding-left: 28px;
-}
-
-.syllabus-timeline::before {
-  content: "";
-  position: absolute;
-  top: 8px;
-  left: 8px;
-  bottom: 8px;
-  width: 2px;
-  background: #e2e8f0;
-}
-
-.syllabus-item {
-  position: relative;
-  margin-bottom: 2.2rem;
-}
-
-.syllabus-item:last-child {
-  margin-bottom: 0;
-}
-
-.syllabus-week-badge {
-  position: absolute;
-  left: -42px;
-  top: 2px;
-  width: 30px;
-  height: 30px;
-  background: var(--accent-blue);
-  color: var(--white);
-  font-size: 0.65rem;
-  font-weight: 800;
-  border-radius: 50%;
-  display: flex;
+/* Tag Chips (Minimal Glassmorphism, No Emojis) */
+.course-details .tag {
+  display: inline-flex;
   align-items: center;
-  justify-content: center;
-  text-transform: uppercase;
-  border: 4px solid var(--white);
-  box-shadow: 0 0 0 2px var(--accent-blue);
-}
-
-.syllabus-info h3 {
-  font-size: 1.1rem;
-  font-weight: 700;
-  margin: 0 0 0.4rem;
-  color: var(--dark);
-}
-
-.syllabus-info p {
-  font-size: 0.92rem;
-  line-height: 1.6;
-  color: var(--muted);
-  margin: 0;
-}
-
-/* ── Sidebar & Enrollment Card ────────────────────────────────────────── */
-.details-sidebar {
-  position: sticky;
-  top: 24px;
-  align-self: flex-start;
-}
-
-.sidebar-card {
-  background: var(--white);
-  border-radius: var(--radius-lg);
-  padding: 2.2rem;
-  box-shadow:
-    0 10px 30px -10px rgba(0, 0, 0, 0.08),
-    0 1px 3px rgba(0, 0, 0, 0.01);
-  border: 1px solid #f1f5f9;
-}
-
-.sidebar-card h3 {
-  font-size: 1.3rem;
-  font-weight: 800;
-  letter-spacing: -0.02em;
-  margin: 0 0 0.5rem;
-  color: var(--dark);
-}
-
-.card-subtitle {
-  font-size: 0.85rem;
-  line-height: 1.5;
-  color: var(--muted);
-  margin-bottom: 1.8rem;
-}
-
-/* ── Enrollment Registration Form ────────────────────────────────────── */
-.register-form {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-}
-
-.form-group {
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-}
-
-.form-group label {
-  font-size: 0.78rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.03em;
-  color: var(--muted);
-}
-
-.form-group input[type="text"],
-.form-group input[type="email"],
-.form-group input[type="tel"],
-.form-group textarea {
-  padding: 10px 14px;
-  font-size: 0.92rem;
-  border-radius: var(--radius-sm);
-  border: 1.5px solid #cbd5e1;
-  background: #f8fafc;
-  outline: none;
+  padding: 8px 18px;
+  border-radius: 12px;
   font-family: var(--font);
-  transition: all 0.3s var(--ease-out);
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  margin-right: 12px;
+  margin-bottom: 1.5rem;
+  transition: all 0.25s ease;
 }
 
-.form-group input:focus,
-.form-group textarea:focus {
-  border-color: var(--accent-blue);
-  background: var(--white);
-  box-shadow: 0 0 0 4px rgba(75, 75, 223, 0.12);
+.course-details .tag:nth-of-type(1) {
+  background: rgba(99, 102, 241, 0.07);
+  color: var(--c1);
+  border: 1px solid rgba(99, 102, 241, 0.15);
 }
 
-.form-group.checkbox {
-  flex-direction: row;
+.course-details .tag:nth-of-type(1):hover {
+  background: var(--c1);
+  color: var(--white);
+  transform: translateY(-2px);
+}
+
+.course-details .tag:nth-of-type(2) {
+  background: rgba(236, 72, 153, 0.07);
+  color: var(--c4);
+  border: 1px solid rgba(236, 72, 153, 0.15);
+}
+
+.course-details .tag:nth-of-type(2):hover {
+  background: var(--c4);
+  color: var(--white);
+  transform: translateY(-2px);
+}
+
+/* Elegant Back Link Button */
+.view-all-courses {
+  display: flex;
   align-items: center;
   gap: 8px;
-  margin-top: 4px;
-}
-
-.form-group.checkbox input[type="checkbox"] {
-  width: 16px;
-  height: 16px;
-  accent-color: var(--accent-blue);
-  cursor: pointer;
-}
-
-.form-group.checkbox label {
-  font-size: 0.82rem;
-  text-transform: none;
-  font-weight: 500;
-  letter-spacing: 0;
-  color: var(--muted);
-  cursor: pointer;
-}
-
-.submit-register-btn {
-  width: 100%;
-  padding: 12px 24px;
-  border-radius: var(--radius-sm);
+  font-family: var(--font);
   font-size: 0.9rem;
   font-weight: 700;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
-  background: var(--accent-blue);
+  color: #64748b;
+  /* Slate 500 */
+  text-decoration: none;
+  margin-top: 1.5rem;
+  padding: 10px 20px;
+  background: #f1f5f9;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  width: fit-content;
+  transition: all 0.25s ease;
+}
+
+.view-all-courses:hover {
+  background: var(--c1);
   color: var(--white);
+  border-color: var(--c1);
+  transform: translateX(-4px);
+  box-shadow: 0 4px 12px rgba(99, 102, 241, 0.1);
+}
+
+/* ── Registration Form Section ── */
+.registration-form {
+  padding-top: 3.5rem;
+  padding-bottom: 6rem;
+}
+
+.registration-form h1 {
+  font-family: var(--font);
+  font-size: 2.2rem;
+  font-weight: 800;
+  color: var(--dark);
+  margin: 0 0 2.5rem;
+  letter-spacing: -0.03em;
+  background: linear-gradient(135deg, var(--dark) 45%, var(--c6) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Form Labels & Fields */
+.registration-form label {
+  display: block;
+  font-family: var(--font);
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: #475569;
+  margin-bottom: 8px;
+  margin-top: 1.75rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.registration-form label:first-of-type {
+  margin-top: 0;
+}
+
+.registration-form input[type="text"],
+.registration-form input[type="email"],
+.registration-form input[type="number"],
+.registration-form textarea {
+  width: 100%;
+  padding: 16px 20px;
+  font-family: var(--font);
+  font-size: 1rem;
+  color: var(--dark);
+  background-color: var(--white);
+  border: 1.5px solid #e2e8f0;
+  border-radius: 14px;
+  transition: all 0.25s ease;
+  outline: none;
+  box-sizing: border-box;
+}
+
+.registration-form input::placeholder,
+.registration-form textarea::placeholder {
+  color: #94a3b8;
+}
+
+/* Hover and Focus States (Supporting Number inputs correctly) */
+.registration-form input:hover,
+.registration-form textarea:hover {
+  border-color: #cbd5e1;
+}
+
+.registration-form input:focus,
+.registration-form textarea:focus {
+  border-color: var(--c1);
+  box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.1);
+  background-color: var(--white);
+}
+
+.registration-form textarea {
+  min-height: 140px;
+  resize: vertical;
+  line-height: 1.6;
+}
+
+/* Form Submission Button */
+.registration-form button[type="submit"] {
+  width: 100%;
+  padding: 16px;
+  margin-top: 2.75rem;
+  font-family: var(--font);
+  font-size: 1rem;
+  font-weight: 800;
+  color: var(--white);
+  background: linear-gradient(135deg, var(--c1) 0%, var(--c6) 100%);
   border: none;
+  border-radius: 14px;
   cursor: pointer;
-  box-shadow: 0 4px 14px rgba(75, 75, 223, 0.25);
-  transition: all 0.3s var(--ease);
-  margin-top: 8px;
+  box-shadow: 0 4px 14px rgba(99, 102, 241, 0.2);
+  transition: all 0.25s ease;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
 }
 
-.submit-register-btn:hover:not(:disabled) {
-  background: #3c3cbe;
+.registration-form button[type="submit"]:hover {
   transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(75, 75, 223, 0.35);
+  box-shadow: 0 8px 20px rgba(99, 102, 241, 0.3);
 }
 
-.submit-register-btn:disabled {
-  opacity: 0.6;
-  cursor: not-allowed;
+.registration-form button[type="submit"]:active {
+  transform: translateY(0);
 }
 
-/* ── Status Banner alerts ────────────────────────────────────────────── */
-.status-banner {
-  padding: 10px 14px;
-  border-radius: var(--radius-sm);
-  font-size: 0.85rem;
-  font-weight: 600;
-  margin-bottom: 1.2rem;
-  line-height: 1.4;
-  animation: slideIn 0.3s var(--ease);
-}
-
-.status-banner.success {
-  background: #d1fae5;
-  color: #065f46;
-  border: 1px solid #a7f3d0;
-}
-
-.status-banner.error {
-  background: #fee2e2;
-  color: #991b1b;
-  border: 1px solid #fca5a5;
-}
-
-@keyframes slideIn {
-  from { opacity: 0; transform: translateY(-10px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-/* ── Responsive Styling ──────────────────────────────────────────────── */
-@media (max-width: 992px) {
-  .details-container {
-    grid-template-columns: 1fr;
-    gap: 32px;
-    margin-top: -1.5rem;
-  }
-  .details-sidebar {
-    position: static;
-  }
-}
-
-@media (max-width: 640px) {
-  .details-hero {
-    padding: 3rem 1.25rem 4rem;
-  }
-  
-  .details-container {
-    padding: 0 1.25rem;
-    margin-bottom: 3.5rem;
-  }
-  
-  .section-block {
-    padding: 1.8rem;
-    border-radius: var(--radius-md);
+/* ── Responsive Adaptations ── */
+@media (max-width: 768px) {
+  body:has(.course-details) {
+    padding: 0 !important;
   }
 
-  .sidebar-card {
-    padding: 1.8rem;
-    border-radius: var(--radius-md);
+  .course-details,
+  .registration-form {
+    width: 92%;
+    padding: 1.5rem 0;
   }
 
-  .syllabus-timeline {
-    padding-left: 20px;
+  .course-details {
+    margin-top: 2.5rem;
+    padding-bottom: 3rem;
   }
 
-  .syllabus-week-badge {
-    left: -32px;
-    width: 24px;
-    height: 24px;
-    font-size: 0.58rem;
-    border: 3px solid var(--white);
+  .course-details h1 {
+    font-size: 2.2rem;
+  }
+
+  .registration-form h1 {
+    font-size: 1.8rem;
   }
 }

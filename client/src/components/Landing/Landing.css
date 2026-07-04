@@ -1,49 +1,80 @@
+hr {
+  border: none;
+  border-bottom: 1px solid #e2e8f0;
+  margin: 0;
+}
+
 .landing-container {
   display: flex;
-  height: 100vh;
-  background-color: #f5f5f5;
+  background-color: #f8fafc;
+  background-image: 
+    radial-gradient(at 0% 0%, rgba(99, 102, 241, 0.04) 0px, transparent 50%),
+    radial-gradient(at 100% 100%, rgba(236, 72, 153, 0.03) 0px, transparent 50%);
   justify-content: space-between;
-  padding: 5rem;
+  align-items: center;
+  padding: 6rem 5% 7rem;
+  box-sizing: border-box;
+  width: 100%;
+}
+
+.landing-container a {
+  text-decoration: none;
 }
 
 .landing-content {
-  padding: 2rem;
+  padding: 2rem 0;
   width: 50%;
+  box-sizing: border-box;
 }
+
 .landing-content h2 {
-  font-size: 2.5rem;
-  color: #4a4a4a;
-  margin-bottom: 1rem;
-  background: linear-gradient(to right, #4b4bdf, #10908d);
+  font-family: "Plus Jakarta Sans", sans-serif;
+  font-size: clamp(2.4rem, 6vw, 3.8rem);
+  font-weight: 800;
+  line-height: 1.15;
+  letter-spacing: -0.04em;
+  margin: 0 0 1.5rem 0;
+  background: linear-gradient(135deg, #0f0e17 40%, #6366f1 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
+
 .landing-content p {
-  font-size: 1.2rem;
-  color: #6a6a6a;
-  margin-bottom: 2rem;
+  font-family: "Plus Jakarta Sans", sans-serif;
+  font-size: 1.15rem;
+  line-height: 1.75;
+  color: #475569; /* Slate 600 */
+  margin: 0 0 2.5rem 0;
+  max-width: 480px;
 }
+
 .landing-button {
-  padding: 0.75rem 1.5rem;
+  display: inline-flex;
+  align-items: center;
+  padding: 14px 28px;
+  font-family: "Plus Jakarta Sans", sans-serif;
   font-size: 1rem;
+  font-weight: 700;
   color: #fff;
-  background-color: #4b4bdf;
+  background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
   border: none;
-  border-radius: 10px;
+  border-radius: 12px;
   cursor: pointer;
-  transition:
-    background-color 0.3s,
-    box-shadow 0.3s;
+  box-shadow: 0 4px 14px rgba(99, 102, 241, 0.25);
+  transition: all 0.25s ease;
+  text-decoration: none;
 }
+
 .landing-button:hover {
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(99, 102, 241, 0.35);
 }
 
 .landing-visual {
   display: flex;
   position: relative;
 }
+
 .learning-mesh {
   width: 360px;
   height: 360px;
@@ -86,6 +117,7 @@
   background-color: #c7d2fe;
   animation-delay: 0s;
 }
+
 .node-2 {
   top: 170px;
   left: 50px;
@@ -93,6 +125,7 @@
   background-color: #dbeafe;
   animation-delay: 1.5s;
 }
+
 .node-3 {
   top: 170px;
   right: 50px;
@@ -100,6 +133,7 @@
   background-color: #fdf2f8;
   animation-delay: 3s;
 }
+
 .node-4 {
   bottom: 30px;
   left: 150px;
@@ -158,10 +192,12 @@
 }
 
 @keyframes floatNode {
+
   0%,
   100% {
     transform: translateY(0px) rotate(0deg);
   }
+
   50% {
     transform: translateY(-10px) rotate(3deg);
   }
@@ -172,10 +208,12 @@
     transform: scale(0.9);
     opacity: 0.8;
   }
+
   50% {
     transform: scale(1.3);
     opacity: 0.3;
   }
+
   100% {
     transform: scale(0.9);
     opacity: 0.8;
@@ -188,10 +226,12 @@
     align-items: center;
     padding: 2rem;
   }
+
   .landing-content {
     width: 100%;
     text-align: center;
   }
+
   .landing-visual {
     margin-top: 2rem;
   }
@@ -203,11 +243,187 @@
     align-items: center;
     padding: 2rem;
   }
+
   .landing-content {
     width: 100%;
     text-align: center;
   }
+
   .landing-visual {
     margin-top: 2rem;
+  }
+}
+
+/* ── About Section (How it Works) ── */
+.about-section {
+  background-color: #ffffff;
+  padding: 8rem 2rem;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.about-section .container,
+.faq-section .container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.section-header {
+  text-align: center;
+  margin-bottom: 5rem;
+}
+
+.section-badge {
+  display: inline-block;
+  padding: 6px 16px;
+  background-color: rgba(99, 102, 241, 0.08);
+  color: #6366f1;
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  border-radius: 99px;
+  margin-bottom: 1.25rem;
+}
+
+.section-title {
+  font-family: var(--font);
+  font-size: clamp(2rem, 4vw, 2.75rem);
+  font-weight: 800;
+  color: #0f0e17;
+  margin: 0 0 1.25rem;
+  letter-spacing: -0.03em;
+  background: linear-gradient(135deg, #0f0e17 60%, #6366f1 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.section-subtitle {
+  font-family: var(--font);
+  font-size: 1.15rem;
+  color: #64748b;
+  max-width: 600px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+.steps-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 3rem;
+}
+
+.step-card {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  transition: transform 0.3s ease;
+  padding: 1rem;
+}
+
+.step-card:hover {
+  transform: translateY(-6px);
+}
+
+.step-icon {
+  width: 56px;
+  height: 56px;
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1.75rem;
+}
+
+.step-icon svg {
+  width: 24px;
+  height: 24px;
+}
+
+.step-1 {
+  background-color: rgba(99, 102, 241, 0.1);
+  color: #6366f1;
+}
+
+.step-2 {
+  background-color: rgba(139, 92, 246, 0.1);
+  color: #8b5cf6;
+}
+
+.step-3 {
+  background-color: rgba(236, 72, 153, 0.1);
+  color: #ec4899;
+}
+
+.step-card h3 {
+  font-family: var(--font);
+  font-size: 1.35rem;
+  font-weight: 800;
+  color: #0f0e17;
+  margin: 0 0 1rem 0;
+  letter-spacing: -0.01em;
+}
+
+.step-card p {
+  font-family: var(--font);
+  font-size: 1rem;
+  color: #475569;
+  line-height: 1.65;
+  margin: 0;
+}
+
+/* ── FAQ Section ── */
+.faq-section {
+  background-color: #f8fafc;
+  padding: 8rem 2rem;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.faq-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 3rem;
+}
+
+.faq-card {
+  background: transparent;
+  padding: 0.5rem 0 0.5rem 1.5rem;
+  border-left: 2px solid transparent;
+  border-image: linear-gradient(to bottom, #6366f1, transparent) 1;
+}
+
+.faq-card h4 {
+  font-family: var(--font);
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: #0f0e17;
+  margin: 0 0 1rem 0;
+  line-height: 1.4;
+}
+
+.faq-card p {
+  font-family: var(--font);
+  font-size: 0.95rem;
+  color: #475569;
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* ── Responsive Adaptations ── */
+@media (max-width: 968px) {
+  .steps-grid,
+  .faq-grid {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+
+  .about-section,
+  .faq-section {
+    padding: 6rem 1.5rem;
+  }
+
+  .section-header {
+    margin-bottom: 3.5rem;
   }
 }

@@ -2,17 +2,21 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1rem;
+  padding: 1.25rem 5%;
   background-color: #fff;
 }
 
 .nav-logo h1 {
   font-size: 2rem;
   color: #4b4bdf;
+  margin: 0;
+  line-height: 1;
 }
 
 .nav-links a {
   text-decoration: none;
   color: #4b4bdf;
+  margin: 0 1rem;
+  font-weight: 600;
+  font-size: 1.1rem;
 }
-

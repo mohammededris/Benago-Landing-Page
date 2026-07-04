@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useMemo } from "react";
 import { Link } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
 import { Header } from "../Header/Header";
@@ -6,7 +6,7 @@ import "./Courses.css";
 
 const fetchCourses = async () => {
   console.log("fetchCourses called");
-  const response = await fetch("http://localhost:3000/api/courses");
+  const response = await fetch(`${import.meta.env.VITE_API_URL}/api/courses`);
 
   if (!response.ok) throw new Error("Failed to fetch courses");
 
@@ -21,6 +21,9 @@ const getCategoryEmoji = (category) => {
 };
 
 function Courses() {
+  // const [searchTerm, setSearchTerm] = useState("");
+  // const [filteredCourses, setFilteredCourses] = useState([]);
+  // const [notAvailable, setNotAvailable] = useState([]);
   const {
     data: courses = [],
     isLoading,
@@ -29,6 +32,26 @@ function Courses() {
     queryKey: ["courses"],
     queryFn: fetchCourses,
   });
+
+  // useEffect(() => {
+  //   const term = searchTerm.toLowerCase();
+
+  //   const notAvailableCourses = courses.filter((course) => !course.isAvailable);
+  //   setNotAvailable(notAvailableCourses);
+
+  //   const filtered = courses.filter((course) => course.isAvailable);
+  //   setFilteredCourses(filtered);
+  // }, [searchTerm, courses]);
+
+  const availableCourses = useMemo(
+    () => courses.filter((course) => course.isAvailable),
+    [courses],
+  );
+
+  const comingSoonCourses = useMemo(
+    () => courses.filter((course) => !course.isAvailable),
+    [courses],
+  );
 
   if (isLoading)
     return (
@@ -43,6 +66,9 @@ function Courses() {
       </div>
     );
 
+  console.log(availableCourses);
+  console.log(comingSoonCourses);
+
   return (
     <div className="courses-page">
       <Header />
@@ -53,7 +79,7 @@ function Courses() {
           industry experts.
         </p>
         <div className="courses-container">
-          {courses.map((course) => (
+          {availableCourses.map((course) => (
             <div key={course._id} className="course-card">
               <div className="card-icon">
                 {getCategoryEmoji(course.category)}
@@ -71,6 +97,25 @@ function Courses() {
                 >
                   Registration & Details
                 </Link>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+      <div className="coming-soon">
+        <h2>Coming Soon</h2>
+        <p>Check back later for new courses!</p>
+        <div className="coming-soon-courses">
+          {comingSoonCourses.map((course) => (
+            <div key={course._id} className="coming-soon-card">
+              <div className="card-icon">
+                {getCategoryEmoji(course.category)}
+              </div>
+              <h2>{course.title}</h2>
+              <p>{course.description}</p>
+              <div className="card-tags">
+                <span className="tag">{course.category}</span>
+                <span className="tag">{course.level}</span>
               </div>
             </div>
           ))}

@@ -1,5 +1,7 @@
+import { Link } from "react-router-dom";
 import { Header } from "../Header/Header";
 import "./Landing.css";
+import Footer from "../Footer/Footer";
 
 export function Landing() {
   return (
@@ -13,7 +15,9 @@ export function Landing() {
             platform for Engineering, AI, Programming, and Industrial
             Technologies. Learn, Build, Engineer.
           </p>
-          <button className="landing-button">Browse Courses</button>
+          <Link to="/courses" className="landing-button">
+            Explore Courses
+          </Link>
         </div>
         <div className="landing-visual">
           <div className="learning-mesh">
@@ -194,6 +198,86 @@ export function Landing() {
           </div>
         </div>
       </section>
+      <section id="about" className="about-section">
+        <div className="container">
+          <div className="section-header text-center">
+            <span className="section-badge">Simple Concept</span>
+            <h2 className="section-title">How Benago Works</h2>
+            <p className="section-subtitle">
+              We build cohort schedules based on local demand. Here is how you can
+              secure your spot.
+            </p>
+          </div>
+          <div className="steps-grid">
+            <div className="step-card">
+              <div className="step-icon step-1">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="book-open-check" aria-hidden="true" className="lucide lucide-book-open-check"><path d="M12 21V7"></path><path d="m16 12 2 2 4-4"></path><path d="M22 6V4a1 1 0 0 0-1-1h-5a4 4 0 0 0-4 4 4 4 0 0 0-4-4H3a1 1 0 0 0-1 1v13a1 1 0 0 0 1 1h6a3 3 0 0 1 3 3 3 3 0 0 1 3-3h6a1 1 0 0 0 1-1v-1.3"></path></svg>
+              </div>
+              <h3>1. Choose a Course</h3>
+              <p>
+                Browse our catalog of dynamic, highly relevant subjects and choose
+                what you'd like to learn.
+              </p>
+            </div>
+            <div className="step-card">
+              <div className="step-icon step-2">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="clipboard-edit" aria-hidden="true" className="lucide lucide-clipboard-edit"><path d="M16 4h2a2 2 0 0 1 2 2v2"></path><path d="M21.34 15.664a1 1 0 1 0-3.004-3.004l-5.01 5.012a2 2 0 0 0-.506.854l-.837 2.87a.5.5 0 0 0 .62.62l2.87-.837a2 2 0 0 0 .854-.506z"></path><path d="M8 22H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"></path><rect x="8" y="2" width="8" height="4" rx="1"></rect></svg>
+              </div>
+              <h3>2. Register Your Interest</h3>
+              <p>
+                Fill out the registration form. No payment required. Your vote
+                validates the interest for the class.
+              </p>
+            </div>
+            <div className="step-card">
+              <div className="step-icon step-3"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="mail-check" aria-hidden="true" class="lucide lucide-mail-check"><path d="M22 13V6a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v12c0 1.1.9 2 2 2h8"></path><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path><path d="m16 19 2 2 4-4"></path></svg></div>
+              <h3>3. Get Confirmation</h3>
+              <p>
+                Receive an email immediately and updates. We'll invite you once we
+                launch the cohort!
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="faq" className="faq-section">
+        <div className="container">
+          <div className="section-header text-center">
+            <span className="section-badge">FAQ</span>
+            <h2 className="section-title">Got Questions?</h2>
+            <p className="section-subtitle">
+              Here are the most common things people ask about our validation
+              phase.
+            </p>
+          </div>
+          <div className="faq-grid">
+            <div className="faq-card">
+              <h4>Is registration binding or paid?</h4>
+              <p>
+                No! This is a zero-cost registration to assess local demand. You
+                are voting to help make the course happen.
+              </p>
+            </div>
+            <div className="faq-card">
+              <h4>When does a course start?</h4>
+              <p>
+                Once a course receives 20 interested registrations, we lock in a
+                mentor, set a schedule, and email all registered users with
+                enrollment options.
+              </p>
+            </div>
+            <div className="faq-card">
+              <h4>Will I get spam?</h4>
+              <p>
+                Never. We only email you a registration confirmation and a
+                notification when the class is scheduled to launch.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+      <Footer />
     </>
   );
 }

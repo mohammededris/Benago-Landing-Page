@@ -8,6 +8,7 @@ export function Header() {
           <h1>Benago</h1>
         </div>
         <div className="nav-links">
+          <Link to="/">Home</Link>
           <Link to="/courses">Courses</Link>
         </div>
       </nav>

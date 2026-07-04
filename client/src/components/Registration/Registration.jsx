@@ -33,13 +33,16 @@ export function Registration() {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    const response = await fetch("http://localhost:3000/api/register", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
+    const response = await fetch(
+      `${import.meta.env.VITE_API_URL}/api/register`,
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
       },
-      body: JSON.stringify(formData),
-    });
+    );
 
     if (!response.ok) {
       throw new Error("Failed to submit registration");
@@ -72,7 +75,7 @@ export function Registration() {
 
         <label htmlFor="phoneNumber">Phone:</label>
         <input
-          type="tel"
+          type="number"
           id="phoneNumber"
           name="phoneNumber"
           onChange={handleChange}

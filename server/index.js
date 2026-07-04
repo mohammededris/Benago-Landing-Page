@@ -12,7 +12,7 @@ const PORT = process.env.PORT;
 
 // Middleware to parse JSON requests
 app.use(express.json());
-app.use(cors());
+app.use(cors({ origin: "*" }));
 app.use(morgan("dev")); // Logging middleware
 
 app.use("/api/courses", courseRoutes);
