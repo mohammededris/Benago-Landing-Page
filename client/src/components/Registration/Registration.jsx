@@ -25,6 +25,8 @@ export function Registration() {
   });
 
   const [showSuccess, setShowSuccess] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState(null);
 
   const handleChange = (event) => {
     const { name, value } = event.target;
@@ -36,25 +38,35 @@ export function Registration() {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    const payload = { ...formData, courseTitle: course.title };
+    setIsSubmitting(true);
+    setSubmitError(null);
 
-    const response = await fetch(
-      `${import.meta.env.VITE_API_URL}/api/register`,
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
+    try {
+      const payload = { ...formData, courseTitle: course.title };
+
+      const response = await fetch(
+        `${import.meta.env.VITE_API_URL}/api/register`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(payload),
         },
-        body: JSON.stringify(payload),
-      },
-    );
+      );
 
-    if (!response.ok) {
-      throw new Error("Failed to submit registration");
+      if (!response.ok) {
+        const data = await response.json().catch(() => ({}));
+        throw new Error(data.message || "Failed to submit registration");
+      }
+
+      await response.json();
+      setShowSuccess(true);
+    } catch (err) {
+      setSubmitError(err.message);
+    } finally {
+      setIsSubmitting(false);
     }
-
-    await response.json();
-    setShowSuccess(true);
   };
 
   return (
@@ -66,8 +78,10 @@ export function Registration() {
           type="text"
           id="name"
           name="name"
+          value={formData.name}
           onChange={handleChange}
           required
+          disabled={isSubmitting}
         />
 
         <label htmlFor="email">Email:</label>
@@ -75,8 +89,10 @@ export function Registration() {
           type="email"
           id="email"
           name="email"
+          value={formData.email}
           onChange={handleChange}
           required
+          disabled={isSubmitting}
         />
 
         <label htmlFor="phoneNumber">Phone:</label>
@@ -84,8 +100,10 @@ export function Registration() {
           type="number"
           id="phoneNumber"
           name="phoneNumber"
+          value={formData.phoneNumber}
           onChange={handleChange}
           required
+          disabled={isSubmitting}
         />
 
         <label htmlFor="university">University:</label>
@@ -93,14 +111,33 @@ export function Registration() {
           type="text"
           id="university"
           name="university"
+          value={formData.university}
           onChange={handleChange}
           required
+          disabled={isSubmitting}
         />
 
         <label htmlFor="note">Note:</label>
-        <textarea id="note" name="note" onChange={handleChange}></textarea>
+        <textarea
+          id="note"
+          name="note"
+          value={formData.note}
+          onChange={handleChange}
+          disabled={isSubmitting}
+        />
 
-        <button type="submit">Submit</button>
+        {submitError && <p className="form-error">{submitError}</p>}
+
+        <button type="submit" disabled={isSubmitting}>
+          {isSubmitting ? (
+            <span className="button-loading">
+              <span className="spinner" />
+              Submitting...
+            </span>
+          ) : (
+            "Submit"
+          )}
+        </button>
       </form>
 
       {showSuccess && (

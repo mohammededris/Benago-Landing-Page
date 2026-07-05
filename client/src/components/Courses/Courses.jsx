@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
 import { Header } from "../Header/Header";
 import Footer from "../Footer/Footer";
+import { CourseCardSkeleton } from "../Skeletons/Skeletons";
 import fetchCourses from "./fetchCourses";
 import "./Courses.css";
 
@@ -14,27 +15,15 @@ const getCategoryEmoji = (category) => {
 };
 
 export function Courses() {
-  // const [searchTerm, setSearchTerm] = useState("");
-  // const [filteredCourses, setFilteredCourses] = useState([]);
-  // const [notAvailable, setNotAvailable] = useState([]);
   const {
     data: courses = [],
     isLoading,
     error,
+    refetch,
   } = useQuery({
     queryKey: ["courses"],
     queryFn: fetchCourses,
   });
-
-  // useEffect(() => {
-  //   const term = searchTerm.toLowerCase();
-
-  //   const notAvailableCourses = courses.filter((course) => !course.isAvailable);
-  //   setNotAvailable(notAvailableCourses);
-
-  //   const filtered = courses.filter((course) => course.isAvailable);
-  //   setFilteredCourses(filtered);
-  // }, [searchTerm, courses]);
 
   const availableCourses = useMemo(
     () => courses.filter((course) => course.isAvailable),
@@ -49,18 +38,38 @@ export function Courses() {
   if (isLoading)
     return (
       <div className="courses-page">
-        <p className="status-text">Loading courses...</p>
-      </div>
-    );
-  if (error)
-    return (
-      <div className="courses-page">
-        <p className="status-text error">Error: {error.message}</p>
+        <Header />
+        <div className="courses-content-wrapper">
+          <h1 className="courses-title">Explore Our Courses</h1>
+          <p className="courses-subtitle">
+            Develop high-demand skills with interactive courses designed by
+            industry experts.
+          </p>
+          <div className="courses-container">
+            {Array.from({ length: 4 }).map((_, i) => (
+              <CourseCardSkeleton key={i} />
+            ))}
+          </div>
+        </div>
       </div>
     );
 
-  console.log(availableCourses);
-  console.log(comingSoonCourses);
+  if (error)
+    return (
+      <div className="courses-page">
+        <Header />
+        <div className="courses-content-wrapper">
+          <div className="error-state">
+            <div className="error-state-icon">!</div>
+            <h2>Failed to load courses</h2>
+            <p>{error.message}</p>
+            <button onClick={() => refetch()} className="retry-button">
+              Try Again
+            </button>
+          </div>
+        </div>
+      </div>
+    );
 
   return (
     <>

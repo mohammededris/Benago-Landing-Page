@@ -4,22 +4,44 @@ import { useEffect } from "react";
 import fetchCourses from "./fetchCourses";
 import { Registration } from "../Registration/Registration";
 import { Header } from "../Header/Header";
+import { CourseDetailsSkeleton } from "../Skeletons/Skeletons";
 
 import "./CourseDetails.css";
 
 export function CourseDetails() {
   const { _id } = useParams();
-  const { data: courses = [] } = useQuery({
+  const { data: courses = [], isLoading, error } = useQuery({
     queryKey: ["courses"],
     queryFn: fetchCourses,
   });
 
   const course = courses.find((course) => course._id === _id);
-  console.log("CourseDetails rendered", course);
 
   useEffect(() => {
     window.scrollTo(0, 0);
   }, [_id]);
+
+  if (isLoading)
+    return (
+      <>
+        <Header />
+        <CourseDetailsSkeleton />
+      </>
+    );
+
+  if (error)
+    return (
+      <>
+        <Header />
+        <div className="course-details">
+          <div className="error-state">
+            <div className="error-state-icon">!</div>
+            <h2>Failed to load course details</h2>
+            <p>{error.message}</p>
+          </div>
+        </div>
+      </>
+    );
 
   return (
     <>
@@ -33,11 +55,23 @@ export function CourseDetails() {
           <Link to="/courses" className="view-all-courses">
             ← Back to All Courses
           </Link>
+          <Registration />
         </div>
       ) : (
-        <p>Course not found</p>
+        <div className="course-details">
+          <div className="error-state">
+            <div className="error-state-icon">?</div>
+            <h2>Course not found</h2>
+            <p>
+              The course you are looking for does not exist or may have been
+              removed.
+            </p>
+            <Link to="/courses" className="retry-button">
+              Browse All Courses
+            </Link>
+          </div>
+        </div>
       )}
-      <Registration />
     </>
   );
 }
