@@ -1,5 +1,5 @@
 import "./App.css";
-import { Routes, Route, Link } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import { Courses } from "./components/Courses/Courses";
 import { Landing } from "./components/Landing/Landing";
 import { CourseDetails } from "./components/Courses/CourseDetails";
