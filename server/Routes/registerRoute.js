@@ -11,6 +11,7 @@ router.post("/", async (req, res) => {
       return res.status(400).json({ message: error.details[0].message });
     }
     const {
+      courseId,
       name,
       email,
       courseTitle,
@@ -20,6 +21,7 @@ router.post("/", async (req, res) => {
       note,
     } = req.body;
     const registration = new Registration({
+      courseId,
       name,
       email,
       courseTitle,

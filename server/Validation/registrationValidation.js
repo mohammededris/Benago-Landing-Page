@@ -1,6 +1,7 @@
 const Joi = require("joi");
 
 const registrationValidation = Joi.object({
+  courseId: Joi.string().required(),
   name: Joi.string().required(),
   email: Joi.string().email().required(),
   courseTitle: Joi.string().required(),

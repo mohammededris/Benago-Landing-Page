@@ -15,6 +15,7 @@ export function Registration() {
   const course = courses.find((course) => course._id === _id);
 
   const [formData, setFormData] = useState({
+    courseId: _id,
     name: "",
     email: "",
     phoneNumber: "",

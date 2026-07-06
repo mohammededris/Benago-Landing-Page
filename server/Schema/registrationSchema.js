@@ -1,6 +1,10 @@
 const mongoose = require("mongoose");
 
 const registrationSchema = new mongoose.Schema({
+  courseId: {
+    type: String,
+    required: true,
+  },
   name: {
     type: String,
     required: true,
