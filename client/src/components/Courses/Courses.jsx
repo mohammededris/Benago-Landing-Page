@@ -7,11 +7,36 @@ import { CourseCardSkeleton } from "../Skeletons/Skeletons";
 import fetchCourses from "./fetchCourses";
 import "./Courses.css";
 
-const getCategoryEmoji = (category) => {
-  const cat = (category || "").toLowerCase();
-  if (cat.includes("development")) return "💻";
-  if (cat.includes("engineering")) return "⚙️";
-  return "💻";
+import {
+  Box,
+  Boxes,
+  Braces,
+  CircuitBoard,
+  Eye,
+  Code2,
+  BrainCircuit,
+  Cpu,
+  Waves,
+  GitBranch,
+  Sigma,
+  Sparkles,
+  GraduationCap,
+} from "lucide-react";
+
+const icons = {
+  Box,
+  Boxes,
+  Braces,
+  CircuitBoard,
+  Eye,
+  Code2,
+  BrainCircuit,
+  Cpu,
+  Waves,
+  GitBranch,
+  Sigma,
+  Sparkles,
+  GraduationCap,
 };
 
 export function Courses() {
@@ -81,55 +106,87 @@ export function Courses() {
             Develop high-demand skills with interactive courses designed by
             industry experts.
           </p>
+          <p className="courses-subtitle">
+            Feel free to ask us questions on our social media platforms
+            <a
+              aria-label="Chat on WhatsApp"
+              href="https://wa.me/201288830792?text=I'm%20interested%20in"
+            >
+              {" "}
+              <img
+                alt="Chat on WhatsApp"
+                src="../../../public/WhatsAppButtonWhiteLarge.svg"
+              />
+            </a>
+          </p>
           <div className="courses-container">
-            {availableCourses.map((course) => (
-              <div key={course._id} className="course-card">
-                <div className="card-icon">
-                  {getCategoryEmoji(course.category)}
+            {availableCourses.map((course) => {
+              const Icon = icons[course.icon];
+              return (
+                <div
+                  key={course._id}
+                  className={`course-card ${course.imageUrl ? "has-bg-image" : ""}`}
+                >
+                  {course.imageUrl && (
+                    <img src={course.imageUrl} className="card-header-image" alt="" />
+                  )}
+                  <div className="card-icon">
+                    <Icon />
+                  </div>
+                  <h2>{course.title}</h2>
+                  <p>{course.description}</p>
+                  <div className="card-tags">
+                    <span className="tag">{course.category}</span>
+                    <span className="tag">{course.level}</span>
+                  </div>
+                  <div className="card-footer">
+                    <Link
+                      to={`/courses/${course._id}`}
+                      className="view-details-button"
+                    >
+                      Registration & Details
+                    </Link>
+                  </div>
                 </div>
-                <h2>{course.title}</h2>
-                <p>{course.description}</p>
-                <div className="card-tags">
-                  <span className="tag">{course.category}</span>
-                  <span className="tag">{course.level}</span>
-                </div>
-                <div className="card-footer">
-                  <Link
-                    to={`/courses/${course._id}`}
-                    className="view-details-button"
-                  >
-                    Registration & Details
-                  </Link>
-                </div>
-              </div>
-            ))}
+              );
+            })}
           </div>
         </div>
         <div className="coming-soon">
           <h2>Coming Soon</h2>
           <p>Check back later for new courses!</p>
           <div className="coming-soon-courses">
-            {comingSoonCourses.map((course) => (
-              <div key={course._id} className="coming-soon-card">
-                <div className="card-icon">
-                  {getCategoryEmoji(course.category)}
+            {comingSoonCourses.map((course) => {
+              const Icon = icons[course.icon];
+
+              return (
+                <div
+                  key={course._id}
+                  className={`coming-soon-card ${course.imageUrl ? "has-bg-image" : ""}`}
+                >
+                  {course.imageUrl && (
+                    <img src={course.imageUrl} className="card-header-image" alt="" />
+                  )}
+                  <div className="card-icon">
+                    <Icon />
+                  </div>
+                  <h2>{course.title}</h2>
+                  <p>{course.description}</p>
+                  <div className="card-tags">
+                    <span className="tag">{course.category}</span>
+                    <span className="tag">{course.level}</span>
+                  </div>
+                  <div className="card-footer">
+                    <Link
+                      to={`/courses/${course._id}`}
+                      className="view-details-button"
+                    >
+                      Submit Interest
+                    </Link>
+                  </div>
                 </div>
-                <h2>{course.title}</h2>
-                <p>{course.description}</p>
-                <div className="card-tags">
-                  <span className="tag">{course.category}</span>
-                  <span className="tag">{course.level}</span>
-                </div>
-                <div className="card-footer">
-                  <Link
-                    to={`/courses/${course._id}`}
-                    className="view-details-button"
-                  >
-                    Submit Interest
-                  </Link>
-                </div>
-              </div>
-            ))}
+              );
+            })}
           </div>
         </div>
       </div>

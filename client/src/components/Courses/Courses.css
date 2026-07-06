@@ -29,9 +29,6 @@
   width: 100%;
   box-sizing: border-box;
   padding: 1.25rem 5% !important;
-  background: var(--white) !important;
-  border-bottom: 1px solid var(--border-color);
-  box-shadow: 0 4px 20px -10px rgba(0, 0, 0, 0.03);
 }
 
 .courses-content-wrapper,
@@ -180,7 +177,7 @@
   border-radius: 50%;
   background: var(--white);
   font-size: 1.5rem;
-  z-index: 1;
+  z-index: 2;
   transition: all 0.35s var(--ease);
 }
 
@@ -219,6 +216,30 @@
   border-radius: var(--radius) var(--radius) 60% 60% / var(--radius)
     var(--radius) 28px 28px;
   transition: height 0.35s var(--ease-out);
+}
+
+.card-header-image {
+  position: absolute;
+  top: 15px;
+  right: 24px;
+  width: 120px;
+  height: 80px;
+  object-fit: contain;
+  object-position: right center;
+  z-index: 1;
+  pointer-events: none;
+  transition: transform 0.35s var(--ease);
+}
+
+.course-card:hover .card-header-image {
+  transform: scale(1.08) translateY(-2px);
+}
+
+.coming-soon-card .card-header-image {
+  width: 80px;
+  height: 50px;
+  top: 15px;
+  right: 24px;
 }
 
 .course-card::after {
@@ -453,6 +474,8 @@
   animation: shine-sweep 3.5s ease-in-out infinite;
 }
 
+/* has-bg-image rules removed - replaced by absolute image positioning */
+
 @keyframes shine-sweep {
   0% {
     background-position: 0% 50%;
@@ -465,8 +488,8 @@
 .coming-soon-card::after {
   content: "🚀 Launching Soon";
   position: absolute;
-  top: 1.1rem;
-  right: 1.1rem;
+  top: 16px;
+  left: 24px;
   padding: 5px 12px;
   border-radius: 99px;
   border: 1px solid

@@ -51,14 +51,6 @@ body:has(.course-details) {
   box-sizing: border-box;
   align-self: stretch;
   padding: 1.25rem 5% !important;
-  background: var(--white) !important;
-  border-bottom: 1px solid var(--border-color);
-  box-shadow: 0 4px 20px -10px rgba(0, 0, 0, 0.03);
-}
-
-#root:has(.course-details) hr {
-  display: none;
-  /* Hide the default horizontal line as header has a border-bottom */
 }
 
 /* ── Content Sections (Borderless, Open Canvas layout) ── */

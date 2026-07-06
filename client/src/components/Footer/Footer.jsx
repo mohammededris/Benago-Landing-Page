@@ -27,6 +27,16 @@ export default function Footer() {
           <p>
             <Mail /> benago2627@gmail.com
           </p>
+          <a
+            aria-label="Chat on WhatsApp"
+            href="https://wa.me/201288830792?text=I'm%20interested%20in"
+          >
+            {" "}
+            <img
+              alt="Chat on WhatsApp"
+              src="../../../public/WhatsAppButtonGreenLarge.svg"
+            />
+          </a>
         </div>
         <div className="footer-social">
           <h3>Social</h3>

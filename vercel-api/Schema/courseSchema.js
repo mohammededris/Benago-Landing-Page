@@ -25,6 +25,8 @@ const courseSchema = new mongoose.Schema({
     type: Boolean,
     default: true,
   },
+  icon: { type: String, required: true },
+  imageUrl: { type: String },
 });
 
 module.exports =
