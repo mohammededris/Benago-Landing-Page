@@ -32,10 +32,7 @@ export default function Footer() {
             href="https://wa.me/201288830792?text=I'm%20interested%20in"
           >
             {" "}
-            <img
-              alt="Chat on WhatsApp"
-              src="../../../public/WhatsAppButtonGreenLarge.svg"
-            />
+            <img alt="Chat on WhatsApp" src="/WhatsAppButtonGreenLarge.svg" />
           </a>
         </div>
         <div className="footer-social">

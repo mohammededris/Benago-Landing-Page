@@ -113,10 +113,7 @@ export function Courses() {
               href="https://wa.me/201288830792?text=I'm%20interested%20in"
             >
               {" "}
-              <img
-                alt="Chat on WhatsApp"
-                src="../../../public/WhatsAppButtonWhiteLarge.svg"
-              />
+              <img alt="Chat on WhatsApp" src="/WhatsAppButtonWhiteLarge.svg" />
             </a>
           </p>
           <div className="courses-container">
@@ -128,7 +125,11 @@ export function Courses() {
                   className={`course-card ${course.imageUrl ? "has-bg-image" : ""}`}
                 >
                   {course.imageUrl && (
-                    <img src={course.imageUrl} className="card-header-image" alt="" />
+                    <img
+                      src={course.imageUrl}
+                      className="card-header-image"
+                      alt=""
+                    />
                   )}
                   <div className="card-icon">
                     <Icon />
@@ -165,7 +166,11 @@ export function Courses() {
                   className={`coming-soon-card ${course.imageUrl ? "has-bg-image" : ""}`}
                 >
                   {course.imageUrl && (
-                    <img src={course.imageUrl} className="card-header-image" alt="" />
+                    <img
+                      src={course.imageUrl}
+                      className="card-header-image"
+                      alt=""
+                    />
                   )}
                   <div className="card-icon">
                     <Icon />
