@@ -16,6 +16,8 @@ export default function Footer() {
     <footer className="footer-container">
       <div className="footer-content">
         <div className="footer-about">
+          <img src="/logo.jpg" alt="Benago logo" className="footer-logo" />
+
           <h3>Benago</h3>
           <p>
             Your gateway to unlocking potential through education. Join
