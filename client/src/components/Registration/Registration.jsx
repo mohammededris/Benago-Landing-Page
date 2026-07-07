@@ -77,6 +77,7 @@ export function Registration() {
         <label htmlFor="name">Name:</label>
         <input
           type="text"
+          placeholder="Enter your name"
           id="name"
           name="name"
           value={formData.name}
@@ -88,6 +89,7 @@ export function Registration() {
         <label htmlFor="email">Email:</label>
         <input
           type="email"
+          placeholder="Enter your email"
           id="email"
           name="email"
           value={formData.email}
@@ -99,6 +101,7 @@ export function Registration() {
         <label htmlFor="phoneNumber">Phone:</label>
         <input
           type="number"
+          placeholder="Enter your phone number"
           id="phoneNumber"
           name="phoneNumber"
           value={formData.phoneNumber}
@@ -110,6 +113,7 @@ export function Registration() {
         <label htmlFor="university">University:</label>
         <input
           type="text"
+          placeholder="Enter your university"
           id="university"
           name="university"
           value={formData.university}
@@ -121,6 +125,7 @@ export function Registration() {
         <label htmlFor="note">Note:</label>
         <textarea
           id="note"
+          placeholder="Enter any additional notes"
           name="note"
           value={formData.note}
           onChange={handleChange}
