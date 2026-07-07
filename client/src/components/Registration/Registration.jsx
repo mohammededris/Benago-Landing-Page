@@ -77,7 +77,7 @@ export function Registration() {
         <label htmlFor="name">Name:</label>
         <input
           type="text"
-          placeholder="Enter your name"
+          placeholder="Ziko"
           id="name"
           name="name"
           value={formData.name}
